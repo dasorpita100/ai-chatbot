@@ -8,37 +8,227 @@
    -------------------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root {
-    /* Light Theme Palette (Default) */
-    --app-bg: #FAFAFB;
-    --sidebar-bg: #FFFFFF;
-    --card-bg: #FFFFFF;
-    --card-bg-hover: #F0FDF4;
-    --card-border: #E5E7EB;
+:root,
+:root[data-theme="light"],
+body[data-theme="light"],
+.stApp[data-theme="light"] {
+    /* ----------------------------------------------------------------------
+       Semantic Theme Tokens (Light Mode - Default)
+       ---------------------------------------------------------------------- */
+    --background: #FAFAFB;
+    --foreground: #0F172A;
+    --surface: #FFFFFF;
+    --surface-foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --card-hover: #F0FDF4;
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    --primary: #10B981;
+    --primary-foreground: #FFFFFF;
+    --primary-hover: #059669;
+    --secondary: #F1F5F9;
+    --secondary-foreground: #334155;
+    --muted: #F8FAFC;
+    --muted-foreground: #64748B;
+    --border: #E5E7EB;
     --border-subtle: #ECEEF1;
-    --text-primary: #111827;
-    --text-secondary: #4B5563;
-    --text-muted: #6B7280;
-    --brand-green: #10B981;
+    --input: #FFFFFF;
+    --input-foreground: #0F172A;
+    --input-border: #CBD5E1;
+    --ring: rgba(16, 185, 129, 0.25);
+    --sidebar-background: #FFFFFF;
+    --sidebar-foreground: #0F172A;
+    --sidebar-border: #ECEEF1;
+    --chat-user-background: #F1F5F9;
+    --chat-user-foreground: #0F172A;
+    --chat-user-border: #E5E7EB;
+    --chat-assistant-background: #FFFFFF;
+    --chat-assistant-foreground: #0F172A;
+    --chat-assistant-border: #ECEEF1;
+    --code-background: #F8FAFC;
+    --code-foreground: #0F172A;
+    --code-border: #E5E7EB;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+
+    /* Semantic Mappings & Legacy Compatibility */
+    --app-bg: var(--background);
+    --sidebar-bg: var(--sidebar-background);
+    --card-bg: var(--card);
+    --card-bg-hover: var(--card-hover);
+    --card-border: var(--border);
+    --text-primary: var(--foreground);
+    --text-secondary: var(--secondary-foreground);
+    --text-muted: var(--muted-foreground);
+    --brand-green: var(--primary);
     --brand-green-dark: #059669;
     --brand-green-bg: #ECFDF5;
     --brand-green-border: #A7F3D0;
     --brand-badge-bg: #EEF2F6;
-    --user-bubble-bg: #F3F4F6;
-    --user-bubble-border: #E5E7EB;
-    --assistant-bubble-bg: #FFFFFF;
-    --assistant-bubble-border: #ECEEF1;
-    --code-bg: #F8FAFC;
-    --chat-input-bg: #FFFFFF;
-    --chat-input-border: #CBD5E1;
-    --chat-input-text: #111827;
-    --chat-input-placeholder: #6B7280;
+    --user-bubble-bg: var(--chat-user-background);
+    --user-bubble-border: var(--chat-user-border);
+    --assistant-bubble-bg: var(--chat-assistant-background);
+    --assistant-bubble-border: var(--chat-assistant-border);
+    --code-bg: var(--code-background);
+    --chat-input-bg: var(--input);
+    --chat-input-border: var(--input-border);
+    --chat-input-text: var(--input-foreground);
+    --chat-input-placeholder: var(--muted-foreground);
     --chat-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     --pro-btn-bg: #111827;
     --pro-btn-text: #FFFFFF;
-    --expander-bg: #F9FAFB;
+    --expander-bg: var(--surface);
     --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
+
+:root[data-theme="dark"],
+body[data-theme="dark"],
+.stApp[data-theme="dark"] {
+    /* ----------------------------------------------------------------------
+       Semantic Theme Tokens (Dark Mode)
+       ---------------------------------------------------------------------- */
+    --background: #111315;
+    --foreground: #F8FAFC;
+    --surface: #1A1D21;
+    --surface-foreground: #F8FAFC;
+    --card: #1E2125;
+    --card-foreground: #F8FAFC;
+    --card-hover: #24292F;
+    --popover: #1E2125;
+    --popover-foreground: #F8FAFC;
+    --primary: #10B981;
+    --primary-foreground: #FFFFFF;
+    --primary-hover: #34D399;
+    --secondary: #24292F;
+    --secondary-foreground: #E2E8F0;
+    --muted: #181A1D;
+    --muted-foreground: #94A3B8;
+    --border: #2E343C;
+    --border-subtle: #24292F;
+    --input: #1A1D21;
+    --input-foreground: #FFFFFF;
+    --input-border: #353B44;
+    --ring: rgba(16, 185, 129, 0.35);
+    --sidebar-background: #181A1D;
+    --sidebar-foreground: #F8FAFC;
+    --sidebar-border: #24292F;
+    --chat-user-background: #22262B;
+    --chat-user-foreground: #FFFFFF;
+    --chat-user-border: #333942;
+    --chat-assistant-background: #1A1D21;
+    --chat-assistant-foreground: #FFFFFF;
+    --chat-assistant-border: #292E36;
+    --code-background: #14171A;
+    --code-foreground: #F8FAFC;
+    --code-border: #2E343C;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+
+    /* Semantic Mappings & Legacy Compatibility */
+    --app-bg: var(--background);
+    --sidebar-bg: var(--sidebar-background);
+    --card-bg: var(--card);
+    --card-bg-hover: var(--card-hover);
+    --card-border: var(--border);
+    --text-primary: var(--foreground);
+    --text-secondary: var(--secondary-foreground);
+    --text-muted: var(--muted-foreground);
+    --brand-green: var(--primary);
+    --brand-green-dark: #34D399;
+    --brand-green-bg: rgba(16, 185, 129, 0.16);
+    --brand-green-border: rgba(16, 185, 129, 0.38);
+    --brand-badge-bg: #272C33;
+    --user-bubble-bg: var(--chat-user-background);
+    --user-bubble-border: var(--chat-user-border);
+    --assistant-bubble-bg: var(--chat-assistant-background);
+    --assistant-bubble-border: var(--chat-assistant-border);
+    --code-bg: var(--code-background);
+    --chat-input-bg: var(--input);
+    --chat-input-border: var(--input-border);
+    --chat-input-text: var(--input-foreground);
+    --chat-input-placeholder: var(--muted-foreground);
+    --chat-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --pro-btn-bg: #22262B;
+    --pro-btn-text: #FFFFFF;
+    --expander-bg: var(--surface);
+    --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]),
+    body:not([data-theme="light"]),
+    .stApp:not([data-theme="light"]) {
+        --background: #111315;
+        --foreground: #F8FAFC;
+        --surface: #1A1D21;
+        --surface-foreground: #F8FAFC;
+        --card: #1E2125;
+        --card-foreground: #F8FAFC;
+        --card-hover: #24292F;
+        --popover: #1E2125;
+        --popover-foreground: #F8FAFC;
+        --primary: #10B981;
+        --primary-foreground: #FFFFFF;
+        --primary-hover: #34D399;
+        --secondary: #24292F;
+        --secondary-foreground: #E2E8F0;
+        --muted: #181A1D;
+        --muted-foreground: #94A3B8;
+        --border: #2E343C;
+        --border-subtle: #24292F;
+        --input: #1A1D21;
+        --input-foreground: #FFFFFF;
+        --input-border: #353B44;
+        --ring: rgba(16, 185, 129, 0.35);
+        --sidebar-background: #181A1D;
+        --sidebar-foreground: #F8FAFC;
+        --sidebar-border: #24292F;
+        --chat-user-background: #22262B;
+        --chat-user-foreground: #FFFFFF;
+        --chat-user-border: #333942;
+        --chat-assistant-background: #1A1D21;
+        --chat-assistant-foreground: #FFFFFF;
+        --chat-assistant-border: #292E36;
+        --code-background: #14171A;
+        --code-foreground: #F8FAFC;
+        --code-border: #2E343C;
+        --success: #10B981;
+        --warning: #F59E0B;
+        --error: #EF4444;
+
+        --app-bg: var(--background);
+        --sidebar-bg: var(--sidebar-background);
+        --card-bg: var(--card);
+        --card-bg-hover: var(--card-hover);
+        --card-border: var(--border);
+        --text-primary: var(--foreground);
+        --text-secondary: var(--secondary-foreground);
+        --text-muted: var(--muted-foreground);
+        --brand-green: var(--primary);
+        --brand-green-dark: #34D399;
+        --brand-green-bg: rgba(16, 185, 129, 0.16);
+        --brand-green-border: rgba(16, 185, 129, 0.38);
+        --brand-badge-bg: #272C33;
+        --user-bubble-bg: var(--chat-user-background);
+        --user-bubble-border: var(--chat-user-border);
+        --assistant-bubble-bg: var(--chat-assistant-background);
+        --assistant-bubble-border: var(--chat-assistant-border);
+        --code-bg: var(--code-background);
+        --chat-input-bg: var(--input);
+        --chat-input-border: var(--input-border);
+        --chat-input-text: var(--input-foreground);
+        --chat-input-placeholder: var(--muted-foreground);
+        --chat-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        --pro-btn-bg: #22262B;
+        --pro-btn-text: #FFFFFF;
+        --expander-bg: var(--surface);
+        --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+}
+
 
 /* --------------------------------------------------------------------------
    2. Global Reset & Streamlit Canvas
@@ -210,65 +400,237 @@ section[data-testid="stSidebar"] button[kind="secondary"]:hover * {
     color: var(--brand-green-dark) !important;
 }
 
-/* Sidebar Expander Settings */
+/* Sidebar Expander Settings & Sliders */
 div[data-testid="stExpander"] {
-    background-color: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
     border-radius: 12px !important;
-    overflow: hidden;
+    overflow: hidden !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+div[data-testid="stExpander"] details {
+    background-color: var(--surface) !important;
 }
 
 div[data-testid="stExpander"] details summary {
-    background-color: var(--expander-bg) !important;
-    color: var(--text-primary) !important;
+    background-color: var(--surface) !important;
+    color: var(--foreground) !important;
     font-weight: 700 !important;
-    padding: 0.65rem 0.85rem !important;
+    padding: 0.75rem 0.95rem !important;
+    cursor: pointer !important;
+    transition: background-color 0.15s ease !important;
+}
+
+div[data-testid="stExpander"] details summary:hover {
+    background-color: var(--card-hover) !important;
 }
 
 div[data-testid="stExpander"] details summary * {
-    color: var(--text-primary) !important;
+    color: var(--foreground) !important;
     font-weight: 700 !important;
+}
+
+div[data-testid="stExpander"] details summary svg {
+    fill: var(--muted-foreground) !important;
+    color: var(--muted-foreground) !important;
+}
+
+div[data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+    background-color: var(--surface) !important;
+    border-top: 1px solid var(--border) !important;
+    padding: 0.85rem !important;
 }
 
 div[data-testid="stExpander"] label,
 div[data-testid="stExpander"] p,
 div[data-testid="stExpander"] span {
-    color: var(--text-secondary) !important;
+    color: var(--foreground) !important;
     font-weight: 600 !important;
     font-size: 0.85rem !important;
 }
 
-div[data-baseweb="select"],
-div[data-baseweb="select"] > div,
-div[data-baseweb="select"] input {
-    background-color: var(--card-bg) !important;
-    border: 1px solid var(--card-border) !important;
-    border-radius: 8px !important;
-    color: var(--text-primary) !important;
+/* Sliders (Temperature, Max Output Tokens) */
+div[data-testid="stSlider"] {
+    color: var(--foreground) !important;
 }
 
-div[data-baseweb="select"] * {
-    color: var(--text-primary) !important;
+div[data-testid="stSlider"] [role="slider"] {
+    background-color: var(--primary) !important;
+    border: 2px solid var(--surface) !important;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.4) !important;
+}
+
+div[data-testid="stSlider"] div[data-testid="stTickBar"] {
+    color: var(--muted-foreground) !important;
+}
+
+div[data-testid="stSlider"] [data-baseweb="slider"] div {
+    background-color: var(--border) !important;
+}
+
+div[data-testid="stSlider"] [data-baseweb="slider"] div:has([role="slider"]) {
+    background-color: var(--primary) !important;
+}
+
+div[data-testid="stSlider"] p,
+div[data-testid="stSlider"] span,
+div[data-testid="stSlider"] label {
+    color: var(--foreground) !important;
+}
+
+input[type="range"] {
+    background-color: transparent !important;
+}
+
+button[aria-label="Dismiss"] {
+    background-color: transparent !important;
+}
+
+div[data-testid="stTextInput"] button,
+button[aria-label="Show password"],
+button[aria-label="Hide password"] {
+    color: var(--muted-foreground) !important;
+    background: transparent !important;
+}
+
+div[data-testid="stTextInput"] button:hover,
+button[aria-label="Show password"]:hover,
+button[aria-label="Hide password"]:hover {
+    color: var(--foreground) !important;
+}
+
+/* Form Inputs & Textareas (System Instructions, API Keys, Dialog Inputs) */
+div[data-testid="stTextInput"] > div,
+div[data-testid="stTextInputRootElement"],
+div[data-baseweb="input"],
+div[data-baseweb="base-input"],
+div[data-testid="stTextArea"] > div,
+div[data-baseweb="textarea"] {
+    background-color: var(--input) !important;
+    border: 1px solid var(--input-border) !important;
+    border-radius: 8px !important;
+    color: var(--input-foreground) !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+div[data-testid="stTextInputRootElement"]:focus-within,
+div[data-testid="stTextInput"] > div:focus-within,
+div[data-testid="stTextArea"] > div:focus-within,
+div[data-baseweb="input"]:focus-within,
+div[data-baseweb="textarea"]:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--ring) !important;
+}
+
+input[data-testid="stTextInputField"],
+div[data-testid="stTextInput"] input,
+div[data-baseweb="input"] input,
+div[data-testid="stTextArea"] textarea,
+div[data-baseweb="textarea"] textarea {
+    background-color: transparent !important;
+    color: var(--input-foreground) !important;
+    -webkit-text-fill-color: var(--input-foreground) !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+}
+
+input[data-testid="stTextInputField"]::placeholder,
+div[data-testid="stTextInput"] input::placeholder,
+div[data-testid="stTextArea"] textarea::placeholder {
+    color: var(--muted-foreground) !important;
+    -webkit-text-fill-color: var(--muted-foreground) !important;
+    opacity: 1 !important;
+}
+
+label[data-testid="stWidgetLabel"],
+label[data-testid="stWidgetLabel"] p,
+label[data-testid="stWidgetLabel"] span {
+    color: var(--foreground) !important;
     font-weight: 600 !important;
 }
 
-div[data-baseweb="select"] svg {
-    fill: var(--text-secondary) !important;
+/* Selectbox / ComboBox Controls (React Aria & BaseWeb) */
+div[data-testid="stSelectbox"] div[role="group"],
+div[data-testid="stSelectbox"] div[data-rac][role="group"],
+div[data-baseweb="select"],
+div[data-baseweb="select"] > div {
+    background-color: var(--input) !important;
+    border: 1px solid var(--input-border) !important;
+    border-radius: 8px !important;
+    color: var(--input-foreground) !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
 }
 
+div[data-testid="stSelectbox"] div[role="group"]:focus-within,
+div[data-baseweb="select"]:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--ring) !important;
+}
+
+div[data-testid="stSelectbox"] input,
+div[data-baseweb="select"] input {
+    background-color: transparent !important;
+    color: var(--input-foreground) !important;
+    -webkit-text-fill-color: var(--input-foreground) !important;
+    font-weight: 600 !important;
+    border: none !important;
+}
+
+div[data-testid="stSelectbox"] button,
+div[data-testid="stSelectbox"] svg,
+div[data-baseweb="select"] svg {
+    color: var(--muted-foreground) !important;
+    fill: var(--muted-foreground) !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Virtual Dropdown Popovers & Menus (React Aria & BaseWeb) */
+div[data-testid="stSelectboxVirtualDropdown"],
+div[data-testid="stSelectboxVirtualDropdown"] > div,
+div[data-rac="popover"],
+div.react-aria-Popover,
 div[data-baseweb="popover"],
 div[data-baseweb="popover"] > div,
 div[data-baseweb="menu"],
-ul[role="listbox"],
-li[role="option"] {
-    background-color: var(--card-bg) !important;
-    color: var(--text-primary) !important;
-    border-color: var(--card-border) !important;
+div[role="listbox"],
+ul[role="listbox"] {
+    background-color: var(--popover) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    color: var(--popover-foreground) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45) !important;
 }
 
-li[role="option"]:hover {
-    background-color: var(--card-bg-hover) !important;
-    color: var(--brand-green-dark) !important;
+div[data-testid="stSelectboxVirtualDropdown"] [role="option"],
+div[role="listbox"] [role="option"],
+ul[role="listbox"] li[role="option"],
+li[role="option"] {
+    background-color: transparent !important;
+    color: var(--popover-foreground) !important;
+    font-weight: 500 !important;
+    padding: 0.55rem 0.85rem !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: background-color 0.12s ease, color 0.12s ease !important;
+}
+
+div[data-testid="stSelectboxVirtualDropdown"] [role="option"] *,
+div[role="listbox"] [role="option"] * {
+    color: inherit !important;
+}
+
+div[data-testid="stSelectboxVirtualDropdown"] [role="option"]:hover,
+div[data-testid="stSelectboxVirtualDropdown"] [role="option"][data-focused="true"],
+div[data-testid="stSelectboxVirtualDropdown"] [role="option"][aria-selected="true"],
+div[role="listbox"] [role="option"]:hover,
+div[role="listbox"] [role="option"][aria-selected="true"],
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"] {
+    background-color: var(--card-hover) !important;
+    color: var(--primary) !important;
 }
 
 /* Connection Status Badge in Sidebar */
@@ -937,47 +1299,69 @@ div[data-testid="stChatInput"] button svg {
 }
 
 /* --------------------------------------------------------------------------
-   10. Modals, Dialogs, Popovers & Deploy Window (High Contrast Adaptation)
+   10. Modals, Dialogs, Popovers & Tabs (Adaptive Theme Architecture)
    -------------------------------------------------------------------------- */
+
+/* Backdrop overlay */
+div[data-testid="stDialog"],
+section[data-testid="stDialog"],
+div[data-baseweb="modal"],
+div[data-testid="stModal"] {
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+/* Dialog & Modal Card Containers */
+div[data-testid="stDialog"] > div,
+div[data-testid="stDialog"] div[data-rac],
+div[data-testid="stDialog"] [role="dialog"],
+section[data-testid="stDialog"] > div,
 div[role="dialog"],
-div[role="dialog"] div,
-div[data-testid="stModal"],
-div[data-testid="stModal"] div,
+div[data-testid="stModal"] > div,
 div[data-baseweb="modal"] [role="dialog"],
 div[data-baseweb="modal"] [role="dialog"] div,
 div[data-baseweb="modal"] [data-baseweb="modal-body"] {
-    background-color: var(--card-bg) !important;
-    color: var(--text-primary) !important;
+    background-color: var(--card) !important;
+    color: var(--card-foreground) !important;
 }
 
+div[data-testid="stDialog"] > div,
+div[data-testid="stDialog"] div[data-rac],
 div[role="dialog"],
 div[data-baseweb="modal"] [role="dialog"],
-div[data-testid="stModal"] {
-    border: 1.5px solid var(--card-border) !important;
+div[data-testid="stModal"] > div {
+    border: 1.5px solid var(--border) !important;
     border-radius: 18px !important;
     box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Modal Title & Headings (e.g. "Deploy this app using...", platform titles) */
+/* Modal Title & Headings */
+div[data-testid="stDialog"] h1,
+div[data-testid="stDialog"] h2,
+div[data-testid="stDialog"] h3,
+div[data-testid="stDialog"] h4,
+div[data-testid="stDialog"] [class*="heading"],
+div[data-testid="stDialog"] [class*="title"],
 div[role="dialog"] h1,
 div[role="dialog"] h2,
 div[role="dialog"] h3,
 div[role="dialog"] h4,
-div[role="dialog"] h5,
-div[role="dialog"] h6,
-div[role="dialog"] [class*="heading"],
-div[role="dialog"] [class*="title"],
 div[data-testid="stModal"] h1,
 div[data-testid="stModal"] h2,
 div[data-testid="stModal"] h3,
 div[data-baseweb="modal"] h1,
 div[data-baseweb="modal"] h2,
 div[data-baseweb="modal"] h3 {
-    color: var(--text-primary) !important;
+    color: var(--foreground) !important;
     font-weight: 800 !important;
 }
 
 /* Modal Body Text, Bullet Points & Paragraphs */
+div[data-testid="stDialog"] p,
+div[data-testid="stDialog"] span,
+div[data-testid="stDialog"] li,
+div[data-testid="stDialog"] label,
+div[data-testid="stDialog"] ul,
 div[role="dialog"] p,
 div[role="dialog"] span,
 div[role="dialog"] li,
@@ -989,62 +1373,153 @@ div[data-testid="stModal"] li,
 div[data-baseweb="modal"] p,
 div[data-baseweb="modal"] span,
 div[data-baseweb="modal"] li {
-    color: var(--text-secondary) !important;
+    color: var(--foreground) !important;
     font-size: 0.92rem !important;
     line-height: 1.55 !important;
 }
 
-/* Modal Sub-captions (e.g., "For community, always free", "For enterprise") */
+/* Modal Sub-captions */
+div[data-testid="stDialog"] [class*="caption"],
+div[data-testid="stDialog"] small,
 div[role="dialog"] [class*="caption"],
 div[role="dialog"] small,
 div[data-testid="stModal"] [class*="caption"],
 div[data-baseweb="modal"] [class*="caption"],
 div[data-baseweb="modal"] small {
-    color: var(--text-muted) !important;
+    color: var(--muted-foreground) !important;
     font-size: 0.82rem !important;
     font-weight: 600 !important;
 }
 
 /* Close button on modal */
+div[data-testid="stDialog"] button[aria-label="Close"],
+div[data-testid="stDialog"] button:has(svg),
+section[data-testid="stDialog"] button[aria-label="Close"],
 div[role="dialog"] button[aria-label="Close"],
 div[data-testid="stModal"] button[aria-label="Close"],
 div[data-baseweb="modal"] button[aria-label="Close"],
 div[role="dialog"] button:has(svg) {
-    color: var(--text-secondary) !important;
+    color: var(--muted-foreground) !important;
     background: transparent !important;
     border: none !important;
 }
 
+div[data-testid="stDialog"] button[aria-label="Close"] svg,
+div[data-testid="stDialog"] button:has(svg) svg,
+div[role="dialog"] button:has(svg) svg {
+    color: var(--muted-foreground) !important;
+    fill: var(--muted-foreground) !important;
+}
+
+div[data-testid="stDialog"] button[aria-label="Close"]:hover,
+div[data-testid="stDialog"] button:has(svg):hover,
+section[data-testid="stDialog"] button[aria-label="Close"]:hover,
 div[role="dialog"] button[aria-label="Close"]:hover,
 div[data-testid="stModal"] button[aria-label="Close"]:hover,
 div[data-baseweb="modal"] button[aria-label="Close"]:hover {
-    color: var(--text-primary) !important;
-    background-color: var(--card-bg-hover) !important;
+    color: var(--foreground) !important;
+    background-color: var(--card-hover) !important;
 }
 
-/* Deploy Primary Action Button ("Deploy now") */
+div[data-testid="stDialog"] button[aria-label="Close"]:hover svg,
+div[data-testid="stDialog"] button:has(svg):hover svg {
+    color: var(--foreground) !important;
+    fill: var(--foreground) !important;
+}
+
+/* Tabs System (BaseWeb & React Aria) */
+div[data-testid="stTabs"],
+div[data-baseweb="tab-list"],
+div[role="tablist"] {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+button[data-baseweb="tab"],
+button[role="tab"] {
+    background-color: transparent !important;
+    color: var(--muted-foreground) !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1rem !important;
+    cursor: pointer !important;
+    transition: color 0.15s ease, border-color 0.15s ease !important;
+}
+
+button[data-baseweb="tab"] p,
+button[role="tab"] p,
+button[data-baseweb="tab"] span,
+button[role="tab"] span {
+    color: inherit !important;
+    font-weight: 600 !important;
+}
+
+button[data-baseweb="tab"]:hover,
+button[role="tab"]:hover {
+    color: var(--foreground) !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"],
+button[role="tab"][aria-selected="true"] {
+    color: var(--primary) !important;
+    border-bottom: 2px solid var(--primary) !important;
+}
+
+div[data-baseweb="tab-highlight"],
+.react-aria-SelectionIndicator {
+    background-color: var(--primary) !important;
+}
+
+div[data-baseweb="tab-border"] {
+    background-color: var(--border) !important;
+}
+
+/* Primary Action & Form Submit Buttons */
+button[data-testid="stBaseButton-primary"],
+button[data-testid="stBaseButton-primaryFormSubmit"],
 div[role="dialog"] button[kind="primary"],
+div[data-testid="stDialog"] button[kind="primary"],
 div[data-testid="stModal"] button[kind="primary"],
-div[data-baseweb="modal"] button[kind="primary"] {
-    background-color: var(--brand-green) !important;
-    color: #FFFFFF !important;
+div[data-baseweb="modal"] button[kind="primary"],
+div[data-testid="stFormSubmitButton"] button {
+    background-color: var(--primary) !important;
+    color: var(--primary-foreground) !important;
     border: none !important;
     font-weight: 700 !important;
     border-radius: 8px !important;
+    transition: background-color 0.15s ease, transform 0.1s ease !important;
 }
 
+button[data-testid="stBaseButton-primary"]:hover,
+button[data-testid="stBaseButton-primaryFormSubmit"]:hover,
+div[role="dialog"] button[kind="primary"]:hover,
+div[data-testid="stDialog"] button[kind="primary"]:hover,
+div[data-testid="stFormSubmitButton"] button:hover {
+    background-color: var(--primary-hover) !important;
+    color: var(--primary-foreground) !important;
+    transform: translateY(-1px) !important;
+}
+
+button[data-testid="stBaseButton-primary"] *,
+button[data-testid="stBaseButton-primaryFormSubmit"] *,
 div[role="dialog"] button[kind="primary"] *,
+div[data-testid="stDialog"] button[kind="primary"] *,
 div[data-testid="stModal"] button[kind="primary"] *,
-div[data-baseweb="modal"] button[kind="primary"] * {
+div[data-baseweb="modal"] button[kind="primary"] *,
+div[data-testid="stFormSubmitButton"] button * {
     background-color: transparent !important;
-    color: #FFFFFF !important;
+    color: var(--primary-foreground) !important;
 }
 
-/* Deploy Secondary Links & Buttons ("Learn more", "Start trial") */
+/* Secondary Links & Buttons */
+div[data-testid="stDialog"] a,
 div[role="dialog"] a,
 div[data-testid="stModal"] a,
 div[data-baseweb="modal"] a,
+button[data-testid="stBaseButton-secondary"],
 div[role="dialog"] button[kind="secondary"],
+div[data-testid="stDialog"] button[kind="secondary"],
 div[data-testid="stModal"] button[kind="secondary"],
 div[data-baseweb="modal"] button[kind="secondary"] {
     background-color: transparent !important;
@@ -1052,11 +1527,25 @@ div[data-baseweb="modal"] button[kind="secondary"] {
     font-weight: 600 !important;
 }
 
-div[role="dialog"] button[kind="secondary"] *,
-div[data-testid="stModal"] button[kind="secondary"] *,
-div[data-baseweb="modal"] button[kind="secondary"] * {
-    background-color: transparent !important;
-    color: var(--brand-green-dark) !important;
+button[data-testid="stBaseButton-secondary"]:hover,
+div[data-testid="stDialog"] button[kind="secondary"]:hover,
+div[role="dialog"] button[kind="secondary"]:hover {
+    background-color: var(--card-hover) !important;
+    color: var(--primary) !important;
+}
+
+/* Streamlit Alert Notifications */
+div[data-testid="stAlert"] {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    color: var(--foreground) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+div[data-testid="stAlert"] p,
+div[data-testid="stAlert"] span {
+    color: var(--foreground) !important;
 }
 
 /* Streamlit Header / Deploy Toolbar */

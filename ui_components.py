@@ -12,67 +12,149 @@ from i18n import t, SUPPORTED_LANGUAGES
 import auth
 
 DARK_THEME_CSS = """
-:root, html, body, .stApp {
-    --app-bg: #111315 !important;
-    --sidebar-bg: #181A1D !important;
-    --card-bg: #1E2125 !important;
-    --card-bg-hover: #192A25 !important;
-    --card-border: #2E343C !important;
+:root, :root[data-theme="dark"], body[data-theme="dark"], .stApp[data-theme="dark"], html, body, .stApp {
+    /* ----------------------------------------------------------------------
+       Semantic Theme Tokens (Dark Mode)
+       ---------------------------------------------------------------------- */
+    --background: #111315 !important;
+    --foreground: #F8FAFC !important;
+    --surface: #1A1D21 !important;
+    --surface-foreground: #F8FAFC !important;
+    --card: #1E2125 !important;
+    --card-foreground: #F8FAFC !important;
+    --card-hover: #24292F !important;
+    --popover: #1E2125 !important;
+    --popover-foreground: #F8FAFC !important;
+    --primary: #10B981 !important;
+    --primary-foreground: #FFFFFF !important;
+    --primary-hover: #34D399 !important;
+    --secondary: #24292F !important;
+    --secondary-foreground: #E2E8F0 !important;
+    --muted: #181A1D !important;
+    --muted-foreground: #94A3B8 !important;
+    --border: #2E343C !important;
     --border-subtle: #24292F !important;
-    --text-primary: #FFFFFF !important;
-    --text-secondary: #E2E8F0 !important;
-    --text-muted: #94A3B8 !important;
-    --brand-green: #10B981 !important;
+    --input: #1A1D21 !important;
+    --input-foreground: #FFFFFF !important;
+    --input-border: #353B44 !important;
+    --ring: rgba(16, 185, 129, 0.35) !important;
+    --sidebar-background: #181A1D !important;
+    --sidebar-foreground: #F8FAFC !important;
+    --sidebar-border: #24292F !important;
+    --chat-user-background: #22262B !important;
+    --chat-user-foreground: #FFFFFF !important;
+    --chat-user-border: #333942 !important;
+    --chat-assistant-background: #1A1D21 !important;
+    --chat-assistant-foreground: #FFFFFF !important;
+    --chat-assistant-border: #292E36 !important;
+    --code-background: #14171A !important;
+    --code-foreground: #F8FAFC !important;
+    --code-border: #2E343C !important;
+    --success: #10B981 !important;
+    --warning: #F59E0B !important;
+    --error: #EF4444 !important;
+
+    /* Semantic Mappings & Legacy Compatibility */
+    --app-bg: var(--background) !important;
+    --sidebar-bg: var(--sidebar-background) !important;
+    --card-bg: var(--card) !important;
+    --card-bg-hover: var(--card-hover) !important;
+    --card-border: var(--border) !important;
+    --text-primary: var(--foreground) !important;
+    --text-secondary: var(--secondary-foreground) !important;
+    --text-muted: var(--muted-foreground) !important;
+    --brand-green: var(--primary) !important;
     --brand-green-dark: #34D399 !important;
     --brand-green-bg: rgba(16, 185, 129, 0.16) !important;
     --brand-green-border: rgba(16, 185, 129, 0.38) !important;
     --brand-badge-bg: #272C33 !important;
-    --user-bubble-bg: #22262B !important;
-    --user-bubble-border: #333942 !important;
-    --assistant-bubble-bg: #1A1D21 !important;
-    --assistant-bubble-border: #292E36 !important;
-    --code-bg: #14171A !important;
-    --chat-input-bg: #1A1D21 !important;
-    --chat-input-border: #353B44 !important;
-    --chat-input-text: #FFFFFF !important;
-    --chat-input-placeholder: #94A3B8 !important;
+    --user-bubble-bg: var(--chat-user-background) !important;
+    --user-bubble-border: var(--chat-user-border) !important;
+    --assistant-bubble-bg: var(--chat-assistant-background) !important;
+    --assistant-bubble-border: var(--chat-assistant-border) !important;
+    --code-bg: var(--code-background) !important;
+    --chat-input-bg: var(--input) !important;
+    --chat-input-border: var(--input-border) !important;
+    --chat-input-text: var(--input-foreground) !important;
+    --chat-input-placeholder: var(--muted-foreground) !important;
     --chat-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-    --pro-btn-bg: #F3F4F6 !important;
-    --pro-btn-text: #111827 !important;
-    --expander-bg: #1A1D21 !important;
+    --pro-btn-bg: #22262B !important;
+    --pro-btn-text: #FFFFFF !important;
+    --expander-bg: var(--surface) !important;
     --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
 }
 """
 
 LIGHT_THEME_CSS = """
-:root, html, body, .stApp {
-    --app-bg: #FAFAFB !important;
-    --sidebar-bg: #FFFFFF !important;
-    --card-bg: #FFFFFF !important;
-    --card-bg-hover: #F0FDF4 !important;
-    --card-border: #E5E7EB !important;
+:root, :root[data-theme="light"], body[data-theme="light"], .stApp[data-theme="light"], html, body, .stApp {
+    /* ----------------------------------------------------------------------
+       Semantic Theme Tokens (Light Mode)
+       ---------------------------------------------------------------------- */
+    --background: #FAFAFB !important;
+    --foreground: #0F172A !important;
+    --surface: #FFFFFF !important;
+    --surface-foreground: #0F172A !important;
+    --card: #FFFFFF !important;
+    --card-foreground: #0F172A !important;
+    --card-hover: #F0FDF4 !important;
+    --popover: #FFFFFF !important;
+    --popover-foreground: #0F172A !important;
+    --primary: #10B981 !important;
+    --primary-foreground: #FFFFFF !important;
+    --primary-hover: #059669 !important;
+    --secondary: #F1F5F9 !important;
+    --secondary-foreground: #334155 !important;
+    --muted: #F8FAFC !important;
+    --muted-foreground: #64748B !important;
+    --border: #E5E7EB !important;
     --border-subtle: #ECEEF1 !important;
-    --text-primary: #0F172A !important;
-    --text-secondary: #334155 !important;
-    --text-muted: #64748B !important;
-    --brand-green: #10B981 !important;
+    --input: #FFFFFF !important;
+    --input-foreground: #0F172A !important;
+    --input-border: #CBD5E1 !important;
+    --ring: rgba(16, 185, 129, 0.25) !important;
+    --sidebar-background: #FFFFFF !important;
+    --sidebar-foreground: #0F172A !important;
+    --sidebar-border: #ECEEF1 !important;
+    --chat-user-background: #F1F5F9 !important;
+    --chat-user-foreground: #0F172A !important;
+    --chat-user-border: #E5E7EB !important;
+    --chat-assistant-background: #FFFFFF !important;
+    --chat-assistant-foreground: #0F172A !important;
+    --chat-assistant-border: #ECEEF1 !important;
+    --code-background: #F8FAFC !important;
+    --code-foreground: #0F172A !important;
+    --code-border: #E5E7EB !important;
+    --success: #10B981 !important;
+    --warning: #F59E0B !important;
+    --error: #EF4444 !important;
+
+    /* Semantic Mappings & Legacy Compatibility */
+    --app-bg: var(--background) !important;
+    --sidebar-bg: var(--sidebar-background) !important;
+    --card-bg: var(--card) !important;
+    --card-bg-hover: var(--card-hover) !important;
+    --card-border: var(--border) !important;
+    --text-primary: var(--foreground) !important;
+    --text-secondary: var(--secondary-foreground) !important;
+    --text-muted: var(--muted-foreground) !important;
+    --brand-green: var(--primary) !important;
     --brand-green-dark: #059669 !important;
     --brand-green-bg: #ECFDF5 !important;
     --brand-green-border: #A7F3D0 !important;
     --brand-badge-bg: #EEF2F6 !important;
-    --user-bubble-bg: #F3F4F6 !important;
-    --user-bubble-border: #E5E7EB !important;
-    --assistant-bubble-bg: #FFFFFF !important;
-    --assistant-bubble-border: #ECEEF1 !important;
-    --code-bg: #F8FAFC !important;
-    --chat-input-bg: #FFFFFF !important;
-    --chat-input-border: #CBD5E1 !important;
-    --chat-input-text: #0F172A !important;
-    --chat-input-placeholder: #64748B !important;
+    --user-bubble-bg: var(--chat-user-background) !important;
+    --user-bubble-border: var(--chat-user-border) !important;
+    --assistant-bubble-bg: var(--chat-assistant-background) !important;
+    --assistant-bubble-border: var(--chat-assistant-border) !important;
+    --code-bg: var(--code-background) !important;
+    --chat-input-bg: var(--input) !important;
+    --chat-input-border: var(--input-border) !important;
+    --chat-input-text: var(--input-foreground) !important;
+    --chat-input-placeholder: var(--muted-foreground) !important;
     --chat-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
     --pro-btn-bg: #111827 !important;
     --pro-btn-text: #FFFFFF !important;
-    --expander-bg: #F9FAFB !important;
+    --expander-bg: var(--surface) !important;
     --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 """
@@ -93,13 +175,47 @@ def load_custom_css(file_path: str = "style.css", theme_mode: str = "💻 System
             base_css = f.read()
 
         if "Dark" in theme_mode:
+            theme_key = "dark"
             theme_override = DARK_THEME_CSS
         elif "Light" in theme_mode:
+            theme_key = "light"
             theme_override = LIGHT_THEME_CSS
         else:
+            theme_key = "system"
             theme_override = SYSTEM_THEME_CSS
 
         st.markdown(f"<style>\n{base_css}\n{theme_override}\n</style>", unsafe_allow_html=True)
+
+        # Apply root data-theme attribute and sync with system if in auto mode
+        theme_script = f"""
+        <script>
+        (function() {{
+            const mode = "{theme_key}";
+            function applyTheme(theme) {{
+                document.documentElement.setAttribute('data-theme', theme);
+                document.body.setAttribute('data-theme', theme);
+                const app = document.querySelector('.stApp');
+                if (app) app.setAttribute('data-theme', theme);
+            }}
+
+            if (mode === 'system') {{
+                const mql = window.matchMedia('(prefers-color-scheme: dark)');
+                function onPrefChange(e) {{
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }}
+                applyTheme(mql.matches ? 'dark' : 'light');
+                try {{
+                    mql.addEventListener('change', onPrefChange);
+                }} catch(err) {{
+                    mql.addListener(onPrefChange);
+                }}
+            }} else {{
+                applyTheme(mode);
+            }}
+        }})();
+        </script>
+        """
+        st.html(theme_script)
     else:
         st.warning(f"Styling file '{file_path}' not found.")
 
