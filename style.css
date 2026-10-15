@@ -1,0 +1,1076 @@
+/* ==========================================================================
+   PerplexAI Design System - Adaptive Theme Architecture
+   Supports Light Mode (Default) and Dark Mode
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Typography & CSS Variables
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    /* Light Theme Palette (Default) */
+    --app-bg: #FAFAFB;
+    --sidebar-bg: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --card-bg-hover: #F0FDF4;
+    --card-border: #E5E7EB;
+    --border-subtle: #ECEEF1;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-muted: #6B7280;
+    --brand-green: #10B981;
+    --brand-green-dark: #059669;
+    --brand-green-bg: #ECFDF5;
+    --brand-green-border: #A7F3D0;
+    --brand-badge-bg: #EEF2F6;
+    --user-bubble-bg: #F3F4F6;
+    --user-bubble-border: #E5E7EB;
+    --assistant-bubble-bg: #FFFFFF;
+    --assistant-bubble-border: #ECEEF1;
+    --code-bg: #F8FAFC;
+    --chat-input-bg: #FFFFFF;
+    --chat-input-border: #CBD5E1;
+    --chat-input-text: #111827;
+    --chat-input-placeholder: #6B7280;
+    --chat-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --pro-btn-bg: #111827;
+    --pro-btn-text: #FFFFFF;
+    --expander-bg: #F9FAFB;
+    --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Reset & Streamlit Canvas
+   -------------------------------------------------------------------------- */
+html, body, [class*="css"], .stApp {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-primary) !important;
+    background-color: var(--app-bg) !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stHeader"],
+section.main,
+.main,
+.block-container {
+    background-color: var(--app-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+#MainMenu, footer {
+    visibility: hidden;
+}
+
+header[data-testid="stHeader"] {
+    background-color: transparent !important;
+    z-index: 10;
+}
+
+.block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 5.5rem !important;
+    max-width: 100% !important;
+}
+
+p, span, label, div {
+    color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. Left Navigation Sidebar
+   -------------------------------------------------------------------------- */
+section[data-testid="stSidebar"],
+[data-testid="stSidebarContent"] {
+    background-color: var(--sidebar-bg) !important;
+    border-right: 1px solid var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 1.5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    background-color: var(--sidebar-bg) !important;
+}
+
+/* Brand Header */
+.brand-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.brand-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #0EA5E9, #10B981) !important;
+    color: #FFFFFF !important;
+    border-radius: 9px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.brand-title {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--text-primary) !important;
+}
+
+.brand-badge {
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    padding: 2px 8px !important;
+    background: var(--brand-badge-bg) !important;
+    color: var(--text-secondary) !important;
+    border-radius: 9999px !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+}
+
+/* "New Thread" Button in Sidebar */
+.new-thread-btn button {
+    background: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1.5px solid var(--card-border) !important;
+    border-radius: 12px !important;
+    padding: 0.65rem 1rem !important;
+    font-weight: 700 !important;
+    font-size: 0.92rem !important;
+    box-shadow: var(--card-shadow) !important;
+    width: 100% !important;
+    transition: all 0.15s ease !important;
+}
+
+.new-thread-btn button * {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+}
+
+.new-thread-btn button:hover {
+    border-color: var(--brand-green) !important;
+    color: var(--brand-green) !important;
+    background-color: var(--card-bg-hover) !important;
+}
+
+.new-thread-btn button:hover * {
+    color: var(--brand-green) !important;
+}
+
+/* Sidebar Navigation Buttons */
+section[data-testid="stSidebar"] button[kind="primary"] {
+    background-color: var(--brand-green-bg) !important;
+    color: var(--brand-green-dark) !important;
+    border: 1.5px solid var(--brand-green) !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.15) !important;
+}
+
+section[data-testid="stSidebar"] button[kind="primary"] * {
+    color: var(--brand-green-dark) !important;
+    font-weight: 700 !important;
+}
+
+section[data-testid="stSidebar"] button[kind="secondary"] {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+}
+
+section[data-testid="stSidebar"] button[kind="secondary"] * {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+section[data-testid="stSidebar"] button[kind="secondary"]:hover {
+    background-color: var(--card-bg-hover) !important;
+    color: var(--brand-green-dark) !important;
+    border-color: var(--brand-green) !important;
+}
+
+section[data-testid="stSidebar"] button[kind="secondary"]:hover * {
+    color: var(--brand-green-dark) !important;
+}
+
+/* Sidebar Expander Settings */
+div[data-testid="stExpander"] {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+div[data-testid="stExpander"] details summary {
+    background-color: var(--expander-bg) !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    padding: 0.65rem 0.85rem !important;
+}
+
+div[data-testid="stExpander"] details summary * {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+}
+
+div[data-testid="stExpander"] label,
+div[data-testid="stExpander"] p,
+div[data-testid="stExpander"] span {
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+}
+
+div[data-baseweb="select"],
+div[data-baseweb="select"] > div,
+div[data-baseweb="select"] input {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+}
+
+div[data-baseweb="select"] * {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+div[data-baseweb="select"] svg {
+    fill: var(--text-secondary) !important;
+}
+
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] > div,
+div[data-baseweb="menu"],
+ul[role="listbox"],
+li[role="option"] {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--card-border) !important;
+}
+
+li[role="option"]:hover {
+    background-color: var(--card-bg-hover) !important;
+    color: var(--brand-green-dark) !important;
+}
+
+/* Connection Status Badge in Sidebar */
+.status-badge-sidebar {
+    font-size: 0.78rem !important;
+    color: var(--brand-green-dark) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.75rem !important;
+    background: var(--brand-green-bg) !important;
+    border: 1px solid var(--brand-green-border) !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+}
+
+.status-badge-sidebar * {
+    color: var(--brand-green-dark) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Center Canvas Top App Bar
+   -------------------------------------------------------------------------- */
+.top-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0.5rem 1.25rem 0.5rem;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    margin-bottom: 1.75rem;
+}
+
+.top-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.top-chat-title {
+    font-size: 1.45rem !important;
+    font-weight: 800 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.025em !important;
+}
+
+.top-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: 9999px !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    background-color: var(--brand-green-bg) !important;
+    color: var(--brand-green-dark) !important;
+    border: 1px solid var(--brand-green-border) !important;
+}
+
+.top-status-pill * {
+    color: var(--brand-green-dark) !important;
+}
+
+.pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--brand-green) !important;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+
+/* Header interactive controls container bottom border */
+.st-key-top_nav_container {
+    padding-bottom: 0.95rem !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+}
+
+.st-key-top_nav_container iframe,
+.st-key-top_nav_container div[data-testid="stCustomComponentV1"] {
+    display: none !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Parent layout: consistent flex layout, centered, consistent gap, no stretching */
+.st-key-top_nav_container div[data-testid="stHorizontalBlock"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+}
+
+.st-key-top_nav_container div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:first-child {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+}
+
+.st-key-top_nav_container div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"]:not(:first-child) {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Intermediate wrappers around the 3 buttons */
+.st-key-hdr_theme_btn,
+.st-key-hdr_lang_popover,
+.st-key-hdr_auth_btn,
+.st-key-hdr_user_menu,
+.st-key-hdr_theme_btn > div,
+.st-key-hdr_lang_popover > div,
+.st-key-hdr_auth_btn > div,
+.st-key-hdr_user_menu > div,
+.st-key-hdr_theme_btn div[data-testid="stButton"],
+.st-key-hdr_lang_popover div[data-testid="stPopover"],
+.st-key-hdr_auth_btn div[data-testid="stButton"],
+.st-key-hdr_user_menu div[data-testid="stPopover"] {
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Single Shared Sizing Rule (.header-control) used across Light, English, and Sign in */
+.header-control,
+.st-key-top_nav_container .st-key-hdr_theme_btn button,
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button,
+.st-key-top_nav_container .st-key-hdr_lang_popover button,
+.st-key-top_nav_container .st-key-hdr_auth_btn button,
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button,
+.st-key-top_nav_container .st-key-hdr_user_menu button {
+    width: 120px !important;
+    height: 56px !important;
+    min-width: 120px !important;
+    min-height: 56px !important;
+    max-width: 120px !important;
+    max-height: 56px !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    flex: 0 0 120px !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-radius: 14px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Inner elements alignment for header controls */
+.header-control *,
+.st-key-top_nav_container .st-key-hdr_theme_btn button *,
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button *,
+.st-key-top_nav_container .st-key-hdr_lang_popover button *,
+.st-key-top_nav_container .st-key-hdr_auth_btn button *,
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button *,
+.st-key-top_nav_container .st-key-hdr_user_menu button * {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+}
+
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button svg,
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button svg {
+    margin-left: 6px !important;
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Individual appearance styling preserving colors & theme */
+/* 1. Theme Toggle Button */
+.st-key-top_nav_container .st-key-hdr_theme_btn button {
+    background-color: var(--card-bg) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--card-border) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+.st-key-top_nav_container .st-key-hdr_theme_btn button * {
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+}
+.st-key-top_nav_container .st-key-hdr_theme_btn button:hover {
+    border-color: var(--brand-green) !important;
+    background-color: var(--card-bg-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12) !important;
+}
+.st-key-top_nav_container .st-key-hdr_theme_btn button:hover * {
+    color: var(--brand-green-dark) !important;
+}
+.st-key-top_nav_container .st-key-hdr_theme_btn button:focus-visible {
+    outline: 2px solid var(--brand-green) !important;
+    outline-offset: 2px !important;
+}
+
+/* 2. Language Dropdown Button */
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button,
+.st-key-top_nav_container .st-key-hdr_lang_popover button {
+    background-color: var(--card-bg) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--card-border) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button *,
+.st-key-top_nav_container .st-key-hdr_lang_popover button * {
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+}
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button:hover,
+.st-key-top_nav_container .st-key-hdr_lang_popover button:hover {
+    border-color: var(--brand-green) !important;
+    background-color: var(--card-bg-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12) !important;
+}
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button:hover *,
+.st-key-top_nav_container .st-key-hdr_lang_popover button:hover * {
+    color: var(--brand-green-dark) !important;
+}
+.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button:focus-visible,
+.st-key-top_nav_container .st-key-hdr_lang_popover button:focus-visible {
+    outline: 2px solid var(--brand-green) !important;
+    outline-offset: 2px !important;
+}
+
+/* 3. Sign In Button */
+.st-key-top_nav_container .st-key-hdr_auth_btn button {
+    background-color: var(--pro-btn-bg) !important;
+    color: var(--pro-btn-text) !important;
+    border-color: transparent !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
+}
+.st-key-top_nav_container .st-key-hdr_auth_btn button * {
+    color: var(--pro-btn-text) !important;
+    font-weight: 700 !important;
+}
+.st-key-top_nav_container .st-key-hdr_auth_btn button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22) !important;
+    filter: brightness(1.08) !important;
+}
+.st-key-top_nav_container .st-key-hdr_auth_btn button:focus-visible {
+    outline: 2px solid var(--brand-green) !important;
+    outline-offset: 2px !important;
+}
+
+/* 4. User Account Profile Menu Button (Authenticated) */
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button,
+.st-key-top_nav_container .st-key-hdr_user_menu button {
+    background-color: var(--brand-green-bg) !important;
+    color: var(--brand-green-dark) !important;
+    border-color: var(--brand-green-border) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 1px 4px rgba(16, 185, 129, 0.12) !important;
+}
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button *,
+.st-key-top_nav_container .st-key-hdr_user_menu button * {
+    color: var(--brand-green-dark) !important;
+    font-weight: 700 !important;
+}
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button:hover,
+.st-key-top_nav_container .st-key-hdr_user_menu button:hover {
+    background-color: var(--brand-green-bg) !important;
+    border-color: var(--brand-green) !important;
+    transform: translateY(-1px) !important;
+}
+.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button:focus-visible,
+.st-key-top_nav_container .st-key-hdr_user_menu button:focus-visible {
+    outline: 2px solid var(--brand-green) !important;
+    outline-offset: 2px !important;
+}
+
+/* Popover Content Styling */
+div[data-baseweb="popover"] {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16) !important;
+}
+div[data-testid="stPopoverBody"] {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    padding: 0.65rem !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 12px !important;
+}
+div[data-testid="stPopoverBody"] div[data-testid="stButton"] button {
+    min-height: 38px !important;
+    height: 38px !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 6px !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    text-align: left !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    margin-bottom: 2px !important;
+}
+div[data-testid="stPopoverBody"] div[data-testid="stButton"] button:hover {
+    background-color: var(--card-bg-hover) !important;
+    border-color: var(--brand-green-border) !important;
+    transform: none !important;
+}
+div[data-testid="stPopoverBody"] div[data-testid="stButton"] button * {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+div[data-testid="stPopoverBody"] div[data-testid="stButton"] button:hover * {
+    color: var(--brand-green-dark) !important;
+}
+
+.popover-header {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin: 0.2rem 0.5rem 0.5rem 0.5rem !important;
+}
+
+.account-role-pill {
+    display: inline-block !important;
+    padding: 0.2rem 0.6rem !important;
+    background: var(--brand-green-bg) !important;
+    color: var(--brand-green-dark) !important;
+    border: 1px solid var(--brand-green-border) !important;
+    border-radius: 9999px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    margin: 0.4rem 0 !important;
+}
+
+.auth-demo-badge {
+    display: inline-block !important;
+    padding: 0.35rem 0.75rem !important;
+    background: var(--brand-green-bg) !important;
+    color: var(--brand-green-dark) !important;
+    border: 1px solid var(--brand-green-border) !important;
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero Welcome Screen
+   -------------------------------------------------------------------------- */
+.hero-wrapper {
+    text-align: center;
+    max-width: 680px;
+    margin: 2rem auto 2.5rem auto;
+}
+
+.hero-heading {
+    font-size: 2.25rem !important;
+    font-weight: 800 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.035em !important;
+    margin-bottom: 0.65rem !important;
+    line-height: 1.25 !important;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.55 !important;
+    font-weight: 500 !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Unified Cards (Suggestions & Projects)
+   -------------------------------------------------------------------------- */
+div[class*="st-key-sug_"] button[kind="secondary"],
+div[class*="st-key-sug_"] button,
+div[class*="st-key-sugg_"] button[kind="secondary"],
+div[class*="st-key-sugg_"] button,
+div[class*="st-key-open_thread_"] button[kind="secondary"],
+div[class*="st-key-open_thread_"] button,
+div.st-key-new_project_btn button[kind="secondary"],
+div.st-key-new_project_btn button,
+div.st-key-clear_chat_inline button[kind="secondary"],
+div.st-key-clear_chat_inline button {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1.5px solid var(--card-border) !important;
+    border-radius: 14px !important;
+    padding: 0.95rem 1.15rem !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    min-height: 72px !important;
+    width: 100% !important;
+    white-space: pre-line !important;
+}
+
+div[class*="st-key-sug_"] button[kind="secondary"] *,
+div[class*="st-key-sug_"] button *,
+div[class*="st-key-sugg_"] button[kind="secondary"] *,
+div[class*="st-key-sugg_"] button *,
+div[class*="st-key-open_thread_"] button[kind="secondary"] *,
+div[class*="st-key-open_thread_"] button *,
+div.st-key-new_project_btn button[kind="secondary"] *,
+div.st-key-new_project_btn button *,
+div.st-key-clear_chat_inline button[kind="secondary"] *,
+div.st-key-clear_chat_inline button * {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.92rem !important;
+    text-align: left !important;
+    white-space: pre-line !important;
+    line-height: 1.5 !important;
+}
+
+div[class*="st-key-sug_"] button p,
+div[class*="st-key-sugg_"] button p,
+div[class*="st-key-open_thread_"] button p,
+div.st-key-new_project_btn button p,
+div.st-key-clear_chat_inline button p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[class*="st-key-sug_"] button[kind="secondary"]:hover,
+div[class*="st-key-sug_"] button:hover,
+div[class*="st-key-sugg_"] button[kind="secondary"]:hover,
+div[class*="st-key-sugg_"] button:hover,
+div[class*="st-key-open_thread_"] button[kind="secondary"]:hover,
+div[class*="st-key-open_thread_"] button:hover,
+div.st-key-new_project_btn button[kind="secondary"]:hover,
+div.st-key-new_project_btn button:hover {
+    border-color: var(--brand-green) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.14) !important;
+    background-color: var(--card-bg-hover) !important;
+}
+
+div[class*="st-key-sug_"] button[kind="secondary"]:hover *,
+div[class*="st-key-sug_"] button:hover *,
+div[class*="st-key-sugg_"] button[kind="secondary"]:hover *,
+div[class*="st-key-sugg_"] button:hover *,
+div[class*="st-key-open_thread_"] button[kind="secondary"]:hover *,
+div[class*="st-key-open_thread_"] button:hover *,
+div.st-key-new_project_btn button[kind="secondary"]:hover *,
+div.st-key-new_project_btn button:hover * {
+    color: var(--brand-green-dark) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Chat Messages & Conversation Flow
+   -------------------------------------------------------------------------- */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.user-bubble {
+    background-color: var(--user-bubble-bg) !important;
+    border: 1.5px solid var(--user-bubble-border) !important;
+    border-radius: 18px 18px 4px 18px !important;
+    padding: 1.1rem 1.35rem !important;
+    max-width: 85%;
+    margin-left: auto;
+    color: var(--text-primary) !important;
+    font-size: 0.98rem !important;
+    line-height: 1.6 !important;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1.25rem;
+}
+
+.user-bubble * {
+    color: var(--text-primary) !important;
+}
+
+.user-bubble-header {
+    font-weight: 800 !important;
+    font-size: 0.78rem !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.assistant-bubble {
+    background-color: var(--assistant-bubble-bg) !important;
+    border: 1.5px solid var(--assistant-bubble-border) !important;
+    border-radius: 18px 18px 18px 4px !important;
+    padding: 1.35rem 1.55rem !important;
+    color: var(--text-primary) !important;
+    font-size: 0.98rem !important;
+    line-height: 1.68 !important;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.assistant-bubble * {
+    color: var(--text-primary) !important;
+}
+
+.assistant-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    color: var(--brand-green-dark) !important;
+}
+
+.assistant-header * {
+    color: var(--brand-green-dark) !important;
+}
+
+.message-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle) !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+pre, code, div[data-testid="stCodeBlock"], .stCodeBlock {
+    background-color: var(--code-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 8px !important;
+}
+
+.message-actions * {
+    color: var(--text-muted) !important;
+}
+
+.stCaption, div[data-testid="stCaptionContainer"] p {
+    color: var(--text-secondary) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Right Panel: Projects & Saved Threads
+   -------------------------------------------------------------------------- */
+.right-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    margin-bottom: 1.15rem;
+}
+
+.right-panel-title {
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.015em !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. Floating Chat Input (Bottom)
+   -------------------------------------------------------------------------- */
+div[data-testid="stChatInput"] {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 20rem;
+    right: 23rem;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 100;
+}
+
+@media (max-width: 1200px) {
+    div[data-testid="stChatInput"] {
+        left: 3rem;
+        right: 3rem;
+    }
+}
+
+div[data-testid="stChatInput"] > div {
+    border-radius: 22px !important;
+    border: 1.5px solid var(--chat-input-border) !important;
+    background-color: var(--chat-input-bg) !important;
+    box-shadow: var(--chat-shadow) !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stChatInput"] > div:focus-within {
+    border-color: var(--brand-green) !important;
+    box-shadow: 0 10px 36px rgba(16, 185, 129, 0.25) !important;
+}
+
+div[data-testid="stChatInput"] textarea {
+    color: var(--chat-input-text) !important;
+    background-color: transparent !important;
+    font-size: 0.96rem !important;
+    font-weight: 500 !important;
+}
+
+div[data-testid="stChatInput"] textarea::placeholder {
+    color: var(--chat-input-placeholder) !important;
+    -webkit-text-fill-color: var(--chat-input-placeholder) !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+div[data-testid="stChatInput"] button {
+    color: var(--brand-green) !important;
+}
+
+div[data-testid="stChatInput"] button svg {
+    fill: var(--brand-green) !important;
+    stroke: var(--brand-green) !important;
+}
+
+/* --------------------------------------------------------------------------
+   10. Modals, Dialogs, Popovers & Deploy Window (High Contrast Adaptation)
+   -------------------------------------------------------------------------- */
+div[role="dialog"],
+div[role="dialog"] div,
+div[data-testid="stModal"],
+div[data-testid="stModal"] div,
+div[data-baseweb="modal"] [role="dialog"],
+div[data-baseweb="modal"] [role="dialog"] div,
+div[data-baseweb="modal"] [data-baseweb="modal-body"] {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+div[role="dialog"],
+div[data-baseweb="modal"] [role="dialog"],
+div[data-testid="stModal"] {
+    border: 1.5px solid var(--card-border) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Modal Title & Headings (e.g. "Deploy this app using...", platform titles) */
+div[role="dialog"] h1,
+div[role="dialog"] h2,
+div[role="dialog"] h3,
+div[role="dialog"] h4,
+div[role="dialog"] h5,
+div[role="dialog"] h6,
+div[role="dialog"] [class*="heading"],
+div[role="dialog"] [class*="title"],
+div[data-testid="stModal"] h1,
+div[data-testid="stModal"] h2,
+div[data-testid="stModal"] h3,
+div[data-baseweb="modal"] h1,
+div[data-baseweb="modal"] h2,
+div[data-baseweb="modal"] h3 {
+    color: var(--text-primary) !important;
+    font-weight: 800 !important;
+}
+
+/* Modal Body Text, Bullet Points & Paragraphs */
+div[role="dialog"] p,
+div[role="dialog"] span,
+div[role="dialog"] li,
+div[role="dialog"] label,
+div[role="dialog"] ul,
+div[data-testid="stModal"] p,
+div[data-testid="stModal"] span,
+div[data-testid="stModal"] li,
+div[data-baseweb="modal"] p,
+div[data-baseweb="modal"] span,
+div[data-baseweb="modal"] li {
+    color: var(--text-secondary) !important;
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+}
+
+/* Modal Sub-captions (e.g., "For community, always free", "For enterprise") */
+div[role="dialog"] [class*="caption"],
+div[role="dialog"] small,
+div[data-testid="stModal"] [class*="caption"],
+div[data-baseweb="modal"] [class*="caption"],
+div[data-baseweb="modal"] small {
+    color: var(--text-muted) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+}
+
+/* Close button on modal */
+div[role="dialog"] button[aria-label="Close"],
+div[data-testid="stModal"] button[aria-label="Close"],
+div[data-baseweb="modal"] button[aria-label="Close"],
+div[role="dialog"] button:has(svg) {
+    color: var(--text-secondary) !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+div[role="dialog"] button[aria-label="Close"]:hover,
+div[data-testid="stModal"] button[aria-label="Close"]:hover,
+div[data-baseweb="modal"] button[aria-label="Close"]:hover {
+    color: var(--text-primary) !important;
+    background-color: var(--card-bg-hover) !important;
+}
+
+/* Deploy Primary Action Button ("Deploy now") */
+div[role="dialog"] button[kind="primary"],
+div[data-testid="stModal"] button[kind="primary"],
+div[data-baseweb="modal"] button[kind="primary"] {
+    background-color: var(--brand-green) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+}
+
+div[role="dialog"] button[kind="primary"] *,
+div[data-testid="stModal"] button[kind="primary"] *,
+div[data-baseweb="modal"] button[kind="primary"] * {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+}
+
+/* Deploy Secondary Links & Buttons ("Learn more", "Start trial") */
+div[role="dialog"] a,
+div[data-testid="stModal"] a,
+div[data-baseweb="modal"] a,
+div[role="dialog"] button[kind="secondary"],
+div[data-testid="stModal"] button[kind="secondary"],
+div[data-baseweb="modal"] button[kind="secondary"] {
+    background-color: transparent !important;
+    color: var(--brand-green-dark) !important;
+    font-weight: 600 !important;
+}
+
+div[role="dialog"] button[kind="secondary"] *,
+div[data-testid="stModal"] button[kind="secondary"] *,
+div[data-baseweb="modal"] button[kind="secondary"] * {
+    background-color: transparent !important;
+    color: var(--brand-green-dark) !important;
+}
+
+/* Streamlit Header / Deploy Toolbar */
+header[data-testid="stHeader"] button,
+header[data-testid="stHeader"] a,
+[data-testid="stToolbar"] button,
+[data-testid="stToolbar"] a {
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+}
+
+header[data-testid="stHeader"] button:hover,
+header[data-testid="stHeader"] a:hover,
+[data-testid="stToolbar"] button:hover {
+    color: var(--text-primary) !important;
+}
+
