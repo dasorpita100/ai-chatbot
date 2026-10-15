@@ -1,0 +1,7 @@
+# Core Application Dependencies
+streamlit>=1.40.0
+google-genai>=1.0.0
+python-dotenv>=1.0.0
+
+# Automated Headless Testing & Verification
+websockets>=13.0.0

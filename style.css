@@ -828,12 +828,15 @@ li[role="option"][aria-selected="true"] {
     box-sizing: border-box !important;
 }
 
-.st-key-top_nav_container .st-key-hdr_lang_popover div[data-testid="stPopover"] > button svg,
-.st-key-top_nav_container .st-key-hdr_user_menu div[data-testid="stPopover"] > button svg {
-    margin-left: 6px !important;
-    width: 14px !important;
-    height: 14px !important;
-    flex-shrink: 0 !important;
+/* Suppress all floating hover tooltips / suggestions across header controls */
+.st-key-top_nav_container [data-testid="stTooltipIcon"],
+.st-key-top_nav_container [data-testid="stTooltipContent"],
+div[data-baseweb="tooltip"],
+div[role="tooltip"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* Individual appearance styling preserving colors & theme */

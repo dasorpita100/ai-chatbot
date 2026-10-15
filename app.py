@@ -238,8 +238,7 @@ with st.sidebar:
         selected_model = st.selectbox(
             t("ai_model"),
             ["gemini-flash-latest", "gemini-3.8-flash"],
-            index=0,
-            help="gemini-flash-latest provides low-latency responses; gemini-3.8-flash handles complex reasoning."
+            index=0
         )
 
         selected_persona = st.selectbox(

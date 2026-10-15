@@ -358,7 +358,6 @@ def render_top_bar(status_text: str = None, current_theme: str = "☀️ Light")
             st.button(
                 theme_btn_label,
                 key="hdr_theme_btn",
-                help="Toggle theme: System (Auto) → Light → Dark",
                 use_container_width=True,
                 on_click=_toggle_theme_action
             )
@@ -372,7 +371,7 @@ def render_top_bar(status_text: str = None, current_theme: str = "☀️ Light")
                 st.session_state.language = chosen_code
                 st.query_params["lang"] = chosen_code
 
-            with st.popover(active_info["label"], key="hdr_lang_popover", help="Select Language", use_container_width=True):
+            with st.popover(active_info["label"], key="hdr_lang_popover", use_container_width=True):
                 st.markdown(f"<p class='popover-header'>{t('select_language')}</p>", unsafe_allow_html=True)
                 for code, info in SUPPORTED_LANGUAGES.items():
                     is_active = (code == active_lang)
@@ -389,7 +388,7 @@ def render_top_bar(status_text: str = None, current_theme: str = "☀️ Light")
         with col_auth:
             # Authentication button / account menu
             if not st.session_state.get("authenticated", False):
-                if st.button(t("sign_in"), key="hdr_auth_btn", help="Sign in to your account", use_container_width=True):
+                if st.button(t("sign_in"), key="hdr_auth_btn", use_container_width=True):
                     show_auth_dialog()
             else:
                 user = st.session_state.get("user", {})
@@ -397,7 +396,7 @@ def render_top_bar(status_text: str = None, current_theme: str = "☀️ Light")
                 display_name = raw_name.split()[0] if " " in raw_name else raw_name
                 if len(display_name) > 9:
                     display_name = display_name[:8] + "…"
-                with st.popover(f"👤 {display_name}", key="hdr_user_menu", help="Account Profile", use_container_width=True):
+                with st.popover(f"👤 {display_name}", key="hdr_user_menu", use_container_width=True):
                     st.markdown(f"**{user.get('name', 'User')}**")
                     st.caption(user.get("email", ""))
                     st.markdown(f"<div class='account-role-pill'>{t('auth_role')}</div>", unsafe_allow_html=True)
